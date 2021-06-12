@@ -26,6 +26,7 @@ import config from '../config'
 const scrollableTypes = config.scrollableTypes
 
 let lazyloadWatched = false
+let disablelazy = true
 function watchLazyload () {
   lazyloadWatched = true
   ; [
@@ -104,7 +105,7 @@ export default {
      * since the updating of component may affect the layout, the lazyloading should
      * be fired.
      */
-//     this._fireLazyload()
+    !disablelazy && this._fireLazyload()
   },
 
   mounted () {
@@ -149,7 +150,7 @@ export default {
         watchAppear(this, true)
       }
 
-//       this._fireLazyload(el)
+    !disablelazy && this._fireLazyload(el)
     }
 
     // give warning for not using $processStyle in vue-loader config.
@@ -180,7 +181,7 @@ export default {
       metaDs[tagName] = 0
     }
     metaDs[tagName]++
-//     this._fireLazyload()
+    !disablelazy && this._fireLazyload()
   },
 
   methods: {
