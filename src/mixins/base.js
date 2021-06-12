@@ -104,7 +104,7 @@ export default {
      * since the updating of component may affect the layout, the lazyloading should
      * be fired.
      */
-    this._fireLazyload()
+//     this._fireLazyload()
   },
 
   mounted () {
@@ -149,7 +149,7 @@ export default {
         watchAppear(this, true)
       }
 
-      this._fireLazyload(el)
+//       this._fireLazyload(el)
     }
 
     // give warning for not using $processStyle in vue-loader config.
@@ -180,7 +180,7 @@ export default {
       metaDs[tagName] = 0
     }
     metaDs[tagName]++
-    this._fireLazyload()
+//     this._fireLazyload()
   },
 
   methods: {
