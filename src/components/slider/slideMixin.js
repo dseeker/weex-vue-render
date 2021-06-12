@@ -21,6 +21,7 @@ const NEIGHBOR_SCALE_TIME = 100
 const MAIN_SLIDE_OPACITY = 1
 const THROTTLE_SCROLL_TIME = 25
 const INTERVAL_MINIMUM = 200
+const DISABLE_LAZY = true
 
 export default {
   created () {
@@ -72,7 +73,7 @@ export default {
         resetBlankFrame()
       }
     }
-    weex.utils.fireLazyload(this.$el, true)
+    !DISABLE_LAZY && weex.utils.fireLazyload(this.$el, true)
     if (this._preIndex !== this.currentIndex) {
       this._slideTo(this.currentIndex)
     }
@@ -81,7 +82,7 @@ export default {
   mounted () {
     this._getWrapperSize()
     this._slideTo(this.currentIndex)
-    weex.utils.fireLazyload(this.$el, true)
+    !DISABLE_LAZY && weex.utils.fireLazyload(this.$el, true)
   },
 
   methods: {
