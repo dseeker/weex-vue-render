@@ -21,6 +21,7 @@ let endEvent
 let styleName
 
 const DESIGN_ROOT_VALUE = 75
+const DISABLE_LAZY = true
 
 const EVENT_NAME_MAP = {
   transition: 'transitionend',
@@ -69,7 +70,7 @@ function transitionOnce (vnode, config, callback) {
 
   const dom = vnode instanceof HTMLElement ? vnode : vnode.$el
   // trigger image lazyloading by force.
-  dom && weex.utils.fireLazyload(dom, true)
+  !DISABLE_LAZY && dom && weex.utils.fireLazyload(dom, true)
 
   const transitionEndHandler = function (event) {
     event && event.stopPropagation()
